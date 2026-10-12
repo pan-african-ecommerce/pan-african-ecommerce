@@ -1,3 +1,6 @@
+// ============================================================
+// START OF FULL worker.js — Step 4B
+// ============================================================
 // ACE Worker — driver system + shop + admin products + admin orders + driver assignment
 const BACKEND = 'https://pahl-backend-production.up.railway.app';
 
@@ -179,9 +182,6 @@ const LOGIN_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><
 + '});'
 + '</script></body></html>';
 
-// ============================================================
-// ===== DRIVER DASHBOARD (Step 4B — with assigned deliveries) =====
-// ============================================================
 const DASHBOARD_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>ACE Driver Dashboard</title><meta name="theme-color" content="#0a5c36"><style>'
 + 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }'
 + '.app { max-width: 480px; margin: 0 auto; min-height: 100vh; padding-bottom: 40px; }'
@@ -499,9 +499,6 @@ const PRODUCT_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"
 + 'loadProduct();'
 + '</script></body></html>';
 
-// ============================================================
-// ADMIN PRODUCTS — with ACE Registry bridge section
-// ============================================================
 const ADMIN_PRODUCTS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin — Products</title><style>'
 + '* { box-sizing: border-box; }'
 + 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 2rem auto; padding: 1rem; color: #333; }'
@@ -552,7 +549,6 @@ const ADMIN_PRODUCTS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset=
 + '  </div>'
 + '  <div id="errorBox" class="error"></div>'
 + '  <div id="successBox" class="success"></div>'
-
 + '  <div class="import-banner">'
 + '    <div class="ib-head">'
 + '      <div class="ib-icon">📥</div>'
@@ -566,7 +562,6 @@ const ADMIN_PRODUCTS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset=
 + '    <button type="button" onclick="loadAceRegistrations()" class="secondary" style="width:auto;padding:0.4rem 0.9rem;margin:0.5rem 0 0;font-size:0.85rem;">↻ Refresh list</button>'
 + '    <div id="aceRegMessage" class="import-msg"></div>'
 + '  </div>'
-
 + '  <div class="card">'
 + '    <h2 style="margin-top:0;">Add New Product</h2>'
 + '    <form id="productForm" enctype="multipart/form-data">'
@@ -649,7 +644,6 @@ const ADMIN_PRODUCTS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset=
 + '  loadProducts();'
 + '  loadAceRegistrations();'
 + '}'
-
 + 'async function loadAceRegistrations() {'
 + '  var sel = document.getElementById("aceRegSelect");'
 + '  var msg = document.getElementById("aceRegMessage");'
@@ -719,7 +713,6 @@ const ADMIN_PRODUCTS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset=
 + '  var priceInput = form.querySelector("input[name=\'price_etb\']");'
 + '  if (priceInput) { priceInput.focus(); priceInput.scrollIntoView({behavior:"smooth", block:"center"}); }'
 + '}'
-
 + 'document.getElementById("productForm").addEventListener("submit", async function(e) {'
 + '  e.preventDefault();'
 + '  var btn = document.getElementById("submitBtn");'
@@ -768,9 +761,6 @@ const ADMIN_PRODUCTS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset=
 + '}'
 + '</script></body></html>';
 
-// ============================================================
-// ADMIN ORDERS — Order management page (Step 4B — with driver assignment)
-// ============================================================
 const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin — Orders</title><style>'
 + '* { box-sizing: border-box; }'
 + 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 1100px; margin: 2rem auto; padding: 1rem; color: #333; }'
@@ -821,7 +811,6 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '.driver-section button { width: auto; padding: 0.45rem 1rem; font-size: 0.85rem; margin: 0; }'
 + '</style></head><body>'
 + '<h1>Admin — Order Manager</h1>'
-
 + '<div id="loginBox" class="card">'
 + '  <h3 style="margin-top:0;">Admin Login</h3>'
 + '  <input type="email" id="emailInput" placeholder="Admin Email">'
@@ -829,13 +818,11 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '  <button onclick="doLogin()" id="loginBtn">Log In</button>'
 + '  <div id="loginError" class="error" style="margin-top:1rem;"></div>'
 + '</div>'
-
 + '<div id="main" style="display:none">'
 + '  <div style="display:flex; gap:0.5rem; margin-bottom:1rem; flex-wrap:wrap;">'
 + '    <button onclick="logout()" class="secondary" style="width:auto; padding:0.5rem 1rem; margin:0;">Logout</button>'
 + '    <a href="/admin-products" style="text-decoration:none;"><button class="secondary" style="width:auto; padding:0.5rem 1rem; margin:0;">← Products</button></a>'
 + '  </div>'
-
 + '  <div class="card">'
 + '    <div class="filters">'
 + '      <div>'
@@ -868,26 +855,21 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '      </div>'
 + '    </div>'
 + '  </div>'
-
 + '  <div id="errorBox" class="error"></div>'
 + '  <div id="successBox" class="success"></div>'
-
 + '  <div class="card">'
 + '    <h2 style="margin-top:0;">Orders <span id="countLabel" style="font-size:0.9rem; color:#888;"></span></h2>'
 + '    <button onclick="loadOrders()" class="secondary" style="width:auto; padding:0.5rem 1rem; margin-bottom:1rem;">↻ Refresh</button>'
 + '    <div id="orderList"><div class="info">Loading orders...</div></div>'
 + '  </div>'
 + '</div>'
-
 + '<script>'
 + 'var API = ' + JSON.stringify(BACKEND) + ';'
 + 'var token = localStorage.getItem("adminToken");'
 + 'var ordersCache = [];'
 + 'var activeDriversCache = [];'
 + 'var expandedOrderIds = {};'
-
 + 'if (token) { showMain(); }'
-
 + 'async function doLogin() {'
 + '  var email = document.getElementById("emailInput").value.trim();'
 + '  var password = document.getElementById("passwordInput").value;'
@@ -902,22 +884,18 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '    else { errBox.textContent = (data && data.error && data.error.message) ? data.error.message : "Login failed"; errBox.style.display = "block"; btn.textContent = "Log In"; btn.disabled = false; }'
 + '  } catch (err) { errBox.textContent = "Network error: " + err.message; errBox.style.display = "block"; btn.textContent = "Log In"; btn.disabled = false; }'
 + '}'
-
 + 'function logout() { localStorage.removeItem("adminToken"); token = null; location.reload(); }'
-
 + 'function showMain() {'
 + '  document.getElementById("loginBox").style.display = "none";'
 + '  document.getElementById("main").style.display = "block";'
 + '  loadActiveDrivers();'
 + '  loadOrders();'
 + '}'
-
 + 'function clearFilters() {'
 + '  document.getElementById("filterPayment").value = "";'
 + '  document.getElementById("filterOrder").value = "";'
 + '  loadOrders();'
 + '}'
-
 + 'function showMsg(text, kind) {'
 + '  var box = kind === "error" ? document.getElementById("errorBox") : document.getElementById("successBox");'
 + '  var other = kind === "error" ? document.getElementById("successBox") : document.getElementById("errorBox");'
@@ -926,12 +904,10 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '  box.style.display = "block";'
 + '  setTimeout(function() { box.style.display = "none"; }, 4000);'
 + '}'
-
 + 'function escapeHtml(s) {'
 + '  if (s === null || s === undefined) return "";'
 + '  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/\'/g, "&#39;");'
 + '}'
-
 + 'function badgeClass(status) {'
 + '  var map = {'
 + '    pending: "badge-pending", paid: "badge-paid", failed: "badge-failed", cancelled: "badge-cancelled",'
@@ -939,13 +915,11 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '  };'
 + '  return map[status] || "badge-other";'
 + '}'
-
 + 'function formatDate(iso) {'
 + '  if (!iso) return "-";'
 + '  var d = new Date(iso);'
 + '  return d.toLocaleString();'
 + '}'
-
 + 'function formatItems(items) {'
 + '  if (!items || !items.length) return "<div class=\\"item-line\\"><span style=\\"color:#888;\\">No items recorded</span><span></span></div>";'
 + '  return items.map(function(it) {'
@@ -956,7 +930,6 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '    return "<div class=\\"item-line\\"><span>" + escapeHtml(name) + " × " + qty + "</span><span>" + escapeHtml(price) + "</span></div>";'
 + '  }).join("");'
 + '}'
-
 + 'async function loadActiveDrivers() {'
 + '  try {'
 + '    var res = await fetch(API + "/api/admin/drivers/active", { headers: { "Authorization": "Bearer " + token } });'
@@ -965,7 +938,6 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '    activeDriversCache = data.drivers || [];'
 + '  } catch (e) { activeDriversCache = []; }'
 + '}'
-
 + 'function renderDriverOptions(selectedId) {'
 + '  var html = "<option value=\\"\\">— Select driver —</option>";'
 + '  if (!activeDriversCache.length) {'
@@ -979,7 +951,6 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '  });'
 + '  return html;'
 + '}'
-
 + 'function renderDetail(o) {'
 + '  var itemsHtml = formatItems(o.items);'
 + '  var driverInfo = "";'
@@ -1014,7 +985,6 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '      </select>'
 + '      <button class=\\"small\\" onclick=\\"updateOrderStatus(\'" + o.id + "\')\\">Update</button>'
 + '    </div>'
-
 + '    <div class=\\"driver-section\\">'
 + '      <h4 style=\\"margin-top:0; color:#0a5c36;\\">Assign driver</h4>'
 + '      " + driverInfo + ""
@@ -1024,13 +994,11 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '        <button class=\\"small secondary\\" onclick=\\"loadActiveDrivers().then(function(){renderOrders();})\\">↻ Refresh drivers</button>'
 + '      </div>'
 + '    </div>'
-
 + '    <h4 style=\\"margin-top:1rem;\\">Notes</h4>'
 + '    <textarea id=\\"notes-" + o.id + "\\" placeholder=\\"Internal notes\\">" + escapeHtml(o.notes || "") + "</textarea>"
 + '    <button class=\\"small secondary\\" style=\\"margin-top:0.3rem;\\" onclick=\\"saveNotes(\'" + o.id + "\')\\">Save notes</button>'
 + '  </div>";'
 + '}'
-
 + 'function renderOrder(o) {'
 + '  var expanded = expandedOrderIds[o.id];'
 + '  var payBadge = "<span class=\\"badge " + badgeClass(o.payment_status) + "\\">" + escapeHtml(o.payment_status) + "</span>";'
@@ -1056,12 +1024,10 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '    " + detail + ""
 + '  </div>";'
 + '}'
-
 + 'function toggleDetail(id) {'
 + '  expandedOrderIds[id] = !expandedOrderIds[id];'
 + '  renderOrders();'
 + '}'
-
 + 'function renderOrders() {'
 + '  var list = document.getElementById("orderList");'
 + '  document.getElementById("countLabel").textContent = "(" + ordersCache.length + ")";'
@@ -1071,7 +1037,6 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '  }'
 + '  list.innerHTML = ordersCache.map(renderOrder).join("");'
 + '}'
-
 + 'async function loadOrders() {'
 + '  var errorBox = document.getElementById("errorBox");'
 + '  errorBox.style.display = "none";'
@@ -1092,7 +1057,6 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '    document.getElementById("orderList").innerHTML = "<div class=\\"error\\" style=\\"display:block;\\">Failed to load orders: " + escapeHtml(err.message) + "</div>";'
 + '  }'
 + '}'
-
 + 'async function updateOrderStatus(id) {'
 + '  var sel = document.getElementById("status-" + id);'
 + '  if (!sel) return;'
@@ -1108,7 +1072,6 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '    else { showMsg((data && data.error && data.error.message) ? data.error.message : "Update failed", "error"); }'
 + '  } catch (err) { showMsg("Network error: " + err.message, "error"); }'
 + '}'
-
 + 'async function assignDriver(id) {'
 + '  var sel = document.getElementById("driver-" + id);'
 + '  if (!sel) return;'
@@ -1125,7 +1088,6 @@ const ADMIN_ORDERS_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset="U
 + '    else { showMsg((data && data.error && data.error.message) ? data.error.message : "Assign failed", "error"); }'
 + '  } catch (err) { showMsg("Network error: " + err.message, "error"); }'
 + '}'
-
 + 'async function saveNotes(id) {'
 + '  var ta = document.getElementById("notes-" + id);'
 + '  if (!ta) return;'
@@ -1358,3 +1320,6 @@ const CHECKOUT_CANCEL_HTML = '<!DOCTYPE html><html lang="en"><head><meta charset
 + 'var ref = params.get("ref") || params.get("id") || "";'
 + 'document.getElementById("refBox").textContent = ref || "(no reference provided)";'
 + '</script></body></html>';
+// ============================================================
+// END OF FULL worker.js — Step 4B
+// ============================================================
